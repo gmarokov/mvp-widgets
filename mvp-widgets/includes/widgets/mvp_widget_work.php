@@ -1,19 +1,9 @@
 <?php 
 
 /**
- * Fired during plugin activation
+ * Widget class for Work items
  *
- * @link       https://github.com/gmarokov
- * @since      1.0.0
- *
- * @package    Mvp_Widgets
- * @subpackage Mvp_Widgets/includes
- */
-
-/**
- * Fired during plugin activation.
- *
- * This class defines all code necessary to run during the plugin's activation.
+ * Displaing work items depending on number of posts selected.
  *
  * @since      1.0.0
  * @package    Mvp_Widgets
