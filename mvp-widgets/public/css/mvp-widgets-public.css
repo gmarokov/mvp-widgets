@@ -2,3 +2,69 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+ /* List */ 
+.vertical-list {
+     list-style: none;
+     padding-left: 0;
+ }
+.vertical-list li {
+     padding: 1em 0;
+     border-bottom: 1px solid #ddd;
+ }
+.vertical-list li:first-child {
+     padding-top: 0;
+ }
+.vertical-list li:last-child {
+    border-bottom: none;
+}
+.vertical-list li h3 {
+    font-weight: bold;
+    margin: 10px 0;
+}
+.vertical-list li p {
+    margin-top: 1em;
+}
+
+ /*This should be directly in the plugins css*/
+ .gha-feed {
+     border: none!important;
+ }
+ .gha-github-icon {
+     padding: 0!important;
+ }
+ .gha-user-info {
+     padding: 0 15px!important;
+ }
+ .gha-header {
+     background: none!important;
+ }
+
+ /* Skills widget bar */
+.progress-bar {
+    line-height: 10px!important;
+}
+div.progress {
+    font-weight: bolder;
+    color: #fff;
+    background-color: #e0dfdf;
+    border: 0px none;
+    box-shadow: none;
+    height: 2em;
+}
+div.progress-bar > span {
+    float: left;
+    position: relative;
+    top: 9px;
+    left: 10px;
+}
+
+/* Contact me widget */
+.fa-stack-1x { 
+    color: white;
+}
+
+.contancts-content { 
+    font-size: 1.3em;
+    padding-left: 7px; 
+}

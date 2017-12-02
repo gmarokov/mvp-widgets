@@ -1,18 +1,25 @@
 <?php
-/* /**
- * Plugin Name:   Example Widget Plugin
- * Plugin URI:    https://jonpenland.com
- * Description:   Adds an example widget that displays the site title and tagline in a widget area.
- * Version:       1.0
- * Author:        Jon Penland
- * Author URI:    https://www.jonpenland.com
+
+/**
+ * Widget displaying GitHub activity for given username 
+ *
+ * This class defines all code necessary to display and manage the widget.
+ *
+ * @since      0.1
+ * @package    Mvp_Widgets
+ * @subpackage Mvp_Widgets/includes
+ * @author     Georgi Marokov <georgi.marokov@gmail.com>
  */
 
 class mvp_widget_github extends WP_Widget {
 
   	// Set up the widget name and description.
   	public function __construct() {
-		$widget_options = array( 'classname' => 'mvp_github_widget', 'description' => 'Displaying repo or user activity.' );
+		$widget_options = array( 
+			'classname' => 'mvp_github_widget', 
+			'description' => 'Displaying repo or user activity.' 
+		);
+
 		parent::__construct( 'mvp_github_widget', 'MVP GitHub', $widget_options );
   	}
 
@@ -21,11 +28,9 @@ class mvp_widget_github extends WP_Widget {
 		$title = apply_filters( 'widget_title', $instance[ 'title' ] );
 		$username = $instance['username'];
 
-		echo $args['before_widget'] . $args['before_title'] . $title . $args['after_title']; ?>
-	
-		<?php do_shortcode('[mvp-github-activity username="'.$username.'"]'); ?>
-
-		<?php echo $args['after_widget'];
+		echo $args['before_widget'] . $args['before_title'] . $title . $args['after_title'];
+		do_shortcode('[mvp-github-activity username="'.$username.'"]');
+		echo $args['after_widget'];
   	}
 
   
@@ -52,6 +57,7 @@ class mvp_widget_github extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['username'] = strip_tags($new_instance['username']);
+		
 		return $instance;
   	}
 

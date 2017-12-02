@@ -1,49 +1,48 @@
 <?php
-/* /**
- * Plugin Name:   Example Widget Plugin
- * Plugin URI:    https://jonpenland.com
- * Description:   Adds an example widget that displays the site title and tagline in a widget area.
- * Version:       1.0
- * Author:        Jon Penland
- * Author URI:    https://www.jonpenland.com
+
+/**
+ * Widget for displaying skills entries.
+ *
+ * This class defines all code necessary to display and manage the widget.
+ *
+ * @since      0.1
+ * @package    Mvp_Widgets
+ * @subpackage Mvp_Widgets/includes
+ * @author     Georgi Marokov <georgi.marokov@gmail.com>
  */
 
 class mvp_widget_skills extends WP_Widget {
 
   	// Set up the widget name and description.
   	public function __construct() {
-    	$widget_options = array( 'classname' => 'mvp_skills_widget', 'description' => 'Displaying skill bars.' );
+    	$widget_options = array( 
+			'classname' => 'mvp_skills_widget', 
+			'description' => 'Displaying skill bars.' 
+		);
+
     	parent::__construct( 'mvp_skills_widget', 'MVP Skills', $widget_options );
   	}
-
+	 
   	// Create the widget output.
   	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance[ 'title' ] );
 		$skills = $instance['skills'];
 		echo $args['before_widget'] . $args['before_title'] . $title . $args['after_title'];?>
-			<ul class="list-unstyled info">
-			<?php for($i = 0; $i < count($skills); $i++) { ?>
-				<li>
-					<i class="fa fa-link"></i><?php echo $skills[$i][0]; ?>
-					<div class="progress">
-					<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $skills[$i][1]; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $skills[$i][1]; ?>%;">
-						<?php echo $skills[$i][1]; ?>%
-					</div>
-					</div>
-				
-				</li>
 			
-			<?php } ?>
-			</ul>
-		<?php echo $args['after_widget'];
+			<?php for($i = 0; $i < count($skills); $i++) { ?>
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $skills[$i][1]; ?>" aria-valuemin="0" aria-valuemax="100"  style="width: <?php echo $skills[$i][1]; ?>%;">
+							<span><?php echo $skills[$i][0]; ?></span>
+						</div>
+					</div>
+			<?php } 
+			echo $args['after_widget'];
   	}
 
   	// Create the admin area widget settings form.
  	public function form( $instance ) {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : ''; 
 		
-		//1. Set empty array for skills
-		//2. 
 		if (isset($instance['skills'])) $skills = $instance['skills'];
 		else {
 			$skills = array(
@@ -61,8 +60,8 @@ class mvp_widget_skills extends WP_Widget {
 		$skills_counter = 0;?>
 	
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
-		<input class="widefat" type="text" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
+			<input class="widefat" type="text" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 	
 		<?php /* $fields = isset ( $instance['fields'] ) ? $instance['fields'] : array();
@@ -146,18 +145,6 @@ class mvp_widget_skills extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		
 		$instance['skills'] = array();
-		/*if ( isset ( $new_instance['skills'] ) ) {
-			$index = 0;
-			foreach ( $new_instance['quotes'] as $value ) {
-				if ( '' !== trim( $value_quote ) ) {
-					$instance['skills'][ $index ] = array();
-					$instance['skills'][ $index ]['name'] = $value;
-					$instance['skills'][ $index ]['percentage'] = 'name author';
-					$index++;
-				}
-			}
-		} */
-	
 	  	$instance['skills'] = $new_instance['skills'];
 
     	return $instance;

@@ -1,18 +1,25 @@
 <?php
-/* /**
- * Plugin Name:   Example Widget Plugin
- * Plugin URI:    https://jonpenland.com
- * Description:   Adds an example widget that displays the site title and tagline in a widget area.
- * Version:       1.0
- * Author:        Jon Penland
- * Author URI:    https://www.jonpenland.com
+
+/**
+ * Widget for displaying languages entries in custom post type 'languages'. 
+ *
+ * This class defines all code necessary to display and manage the widget.
+ *
+ * @since      0.1
+ * @package    Mvp_Widgets
+ * @subpackage Mvp_Widgets/includes
+ * @author     Georgi Marokov <georgi.marokov@gmail.com>
  */
 
 class mvp_widget_languages extends WP_Widget {
 
   	// Set up the widget name and description.
   	public function __construct() {
-		$widget_options = array( 'classname' => 'mvp_languages_widget', 'description' => 'Displaying your languages items.' );
+		$widget_options = array( 
+			'classname' => 'mvp_languages_widget', 
+			'description' => 'Displaying your languages items.' 
+		);
+
 		parent::__construct( 'mvp_languages_widget', 'MVP Languages', $widget_options );
   	}
 
@@ -29,12 +36,22 @@ class mvp_widget_languages extends WP_Widget {
 		)); 
 		
 		if ( $query->have_posts() ) {
+			$output = '<ul class="vertical-list">';
+			
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				echo '<li>' . get_the_title( $query->post->ID ) . '</li>';
+				$output .= '<li><h3>' . get_the_title( $query->post->ID ) . '</h3>';
+				$output .= get_the_excerpt() . '</li>';
 			}
+
 			wp_reset_postdata();
+			$output .= '</ul>';
+			echo $output;
 		}
+		else {
+			echo "No languages added.";
+		}
+
 		echo $args['after_widget'];
   	}
   

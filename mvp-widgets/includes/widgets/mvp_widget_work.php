@@ -1,15 +1,15 @@
 <?php 
 
 /**
- * Widget class for Work items
+ * Widget for displaying work entries in custom post type 'work'.
  *
- * Displaing work items depending on number of posts selected.
+ * This class defines all code necessary to display and manage the widget.
  *
- * @since      1.0.0
+ * @since      0.1
  * @package    Mvp_Widgets
  * @subpackage Mvp_Widgets/includes
- * @author     Georgi <georgi.marokov@gmail.com>
- */ 
+ * @author     Georgi Marokov <georgi.marokov@gmail.com>
+ */
 
 class mvp_widget_work extends WP_Widget {
 	
@@ -18,10 +18,14 @@ class mvp_widget_work extends WP_Widget {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1
 	 */
 	public function __construct() {
-		$widget_options = array( 'classname' => 'mvp_work_widget', 'description' => 'Dislpaying your work items.' );
+		$widget_options = array( 
+			'classname' => 'mvp_work_widget', 
+			'description' => 'Dislpaying your work items.' 
+		);
+		
 		parent::__construct( 'mvp_work_widget', 'MVP Work', $widget_options );
 	}
 
@@ -30,7 +34,7 @@ class mvp_widget_work extends WP_Widget {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1
 	 */
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance[ 'title' ] );
@@ -44,11 +48,18 @@ class mvp_widget_work extends WP_Widget {
 		)); 
 	
 		if ( $query->have_posts() ) {
+			$output = '<ul class="vertical-list">';
 			while ( $query->have_posts() ) {
-			$query->the_post();
-			echo '<li>' . get_the_title( $query->post->ID ) . '</li>';
+				$query->the_post();
+				$output .= '<li><h3>' . get_the_title( $query->post->ID ) . '</h3>';
+				$output .= get_the_excerpt() . '</li>';
 			}
 			wp_reset_postdata();
+			$output .= '</ul>';
+			echo $output;
+		}
+		else {
+			echo "No work added.";
 		}
 
 		echo $args['after_widget'];
@@ -59,7 +70,7 @@ class mvp_widget_work extends WP_Widget {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1
 	 */
 	public function form( $instance ) {
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : ''; 
@@ -82,7 +93,7 @@ class mvp_widget_work extends WP_Widget {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;

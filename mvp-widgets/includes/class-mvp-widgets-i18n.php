@@ -6,8 +6,8 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://github.com/gmarokov
- * @since      1.0.0
+ * @link       https://github.com/gmarokov/mvp-widgets-plugin
+ * @since      0.1
  *
  * @package    Mvp_Widgets
  * @subpackage Mvp_Widgets/includes
@@ -19,10 +19,10 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @since      1.0.0
+ * @since      0.1
  * @package    Mvp_Widgets
  * @subpackage Mvp_Widgets/includes
- * @author     Georgi <georgi.marokov@gmail.com>
+ * @author     Georgi Marokov <georgi.marokov@gmail.com>
  */
 class Mvp_Widgets_i18n {
 
@@ -30,7 +30,7 @@ class Mvp_Widgets_i18n {
 	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1
 	 */
 	public function load_plugin_textdomain() {
 

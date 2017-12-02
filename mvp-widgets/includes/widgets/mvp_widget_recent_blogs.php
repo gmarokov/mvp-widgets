@@ -1,15 +1,25 @@
 <?php
+
 /**
- * Extend Recent Posts Widget 
+ * Widget for displaying recent blog posts.
  *
- * Adds different formatting to the default WordPress Recent Posts Widget
+ * This is an extension of WP's built in widget for recent posts. 
+ *
+ * @since      0.1
+ * @package    Mvp_Widgets
+ * @subpackage Mvp_Widgets/includes
+ * @author     Georgi Marokov <georgi.marokov@gmail.com>
  */
 
 class mvp_widget_recent_blogs extends WP_Widget_Recent_Posts {
 	
 	// Set up the widget name and description.
 	public function __construct() {
-		$widget_options = array( 'classname' => 'mvp_recent_posts_widget', 'description' => 'Recent posts widget.' );
+		$widget_options = array( 
+			'classname' => 'mvp_recent_posts_widget', 
+			'description' => 'Recent posts widget.' 
+		);	
+		
 	 	parent::__construct( 'mvp_recent_posts_widget', 'MVP Recent posts', $widget_options );
 	}
 	   
@@ -21,24 +31,46 @@ class mvp_widget_recent_blogs extends WP_Widget_Recent_Posts {
 				
 		if( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
 			$number = 10;
-					
-		$r = new WP_Query( apply_filters( 'widget_posts_args', array( 'posts_per_page' => $number, 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true ) ) );
-		if( $r->have_posts() ) :
+		
+		echo $before_widget . $before_title . $title . $after_title; 
+		
+		$query = new WP_Query( 
+			apply_filters( 
+				'widget_posts_args', 
+				array( 
+					'posts_per_page' => $number, 
+					'no_found_rows' => true, 
+					'post_status' => 'publish', 
+					'ignore_sticky_posts' => true 
+				) 
+			)
+		);
+		
+		if( $query->have_posts() ) {
+			$output = '<ul class="vertical-list">';
 			
-			echo $before_widget;
-			if( $title ) echo $before_title . $title . $after_title; ?>
-			<ul>
-				<?php while( $r->have_posts() ) : $r->the_post(); ?>				
-				<li><?php the_time( 'F d'); ?> - <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></li>
-				<?php endwhile; ?>
-			</ul>
-			 
-			<?php
-			echo $after_widget;
-		
-		wp_reset_postdata();
-		
-		endif;
+			while( $query->have_posts() ) {
+				$query->the_post(); 				
+				$output .= '<li>';
+				$output .= '<h3><a href="'.get_permalink().'" title="'.get_the_title().'">'.get_the_title().'</a></h3>';
+				$output .= '<p><span>'. get_the_time( 'l, F jS, Y' ) . '</span></p>';
+
+				if ( has_post_thumbnail() ) {
+					$output .= '<a href="'.get_permalink().'"><img src="'.get_the_post_thumbnail_url($post->ID, 'full').'"></img></a>';
+				}
+
+				$output .= '<p>'. get_excerpt(70) .'</p>'; // TODO heavy dependency from theme's function 
+				$output .= '<span class="pull-left">'. get_the_category_list(", ") . '</span>';
+				$output .= '<div class="clearfix"></div>';
+				$output .= '</li>';
+			}
+
+			wp_reset_postdata();
+			$output .= "</ul>";
+			echo $output;
+		}
+
+		echo $after_widget;
 	}
 }
   

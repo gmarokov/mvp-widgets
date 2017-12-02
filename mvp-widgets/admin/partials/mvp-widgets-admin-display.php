@@ -5,8 +5,8 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @link       https://github.com/gmarokov
- * @since      1.0.0
+ * @link       https://github.com/gmarokov/mvp-widgets-plugin
+ * @since      0.1
  *
  * @package    Mvp_Widgets
  * @subpackage Mvp_Widgets/admin/partials

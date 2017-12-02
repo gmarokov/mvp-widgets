@@ -3,8 +3,8 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       https://github.com/gmarokov
- * @since      1.0.0
+ * @link       https://github.com/gmarokov/mvp-widgets-plugin
+ * @since      0.1
  *
  * @package    Mvp_Widgets
  * @subpackage Mvp_Widgets/includes
@@ -15,10 +15,10 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      1.0.0
+ * @since      0.1
  * @package    Mvp_Widgets
  * @subpackage Mvp_Widgets/includes
- * @author     Georgi <georgi.marokov@gmail.com>
+ * @author     Georgi Marokov <georgi.marokov@gmail.com>
  */
 class Mvp_Widgets_Deactivator {
 
@@ -27,7 +27,7 @@ class Mvp_Widgets_Deactivator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1
 	 */
 	public static function deactivate() {
 

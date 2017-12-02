@@ -1,18 +1,25 @@
 <?php
-/* /**
- * Plugin Name:   Example Widget Plugin
- * Plugin URI:    https://jonpenland.com
- * Description:   Adds an example widget that displays the site title and tagline in a widget area.
- * Version:       1.0
- * Author:        Jon Penland
- * Author URI:    https://www.jonpenland.com
+
+/**
+ * Widget displaying education entries from custom post type 'education'. 
+ *
+ * This class defines all code necessary to display and manage the widget.
+ *
+ * @since      0.1
+ * @package    Mvp_Widgets
+ * @subpackage Mvp_Widgets/includes
+ * @author     Georgi Marokov <georgi.marokov@gmail.com>
  */
 
 class mvp_widget_education extends WP_Widget {
 
   	// Set up the widget name and description.
   	public function __construct() {
-		$widget_options = array( 'classname' => 'mvp-education-widget', 'description' => 'Widget displaying your Education items.' );
+		$widget_options = array( 
+			'classname' => 'mvp-education-widget', 
+			'description' => 'Widget displaying your Education items.' 
+		);
+
 		parent::__construct( 'mvp_education_widget', 'MVP Education', $widget_options );
   	}
 
@@ -29,11 +36,20 @@ class mvp_widget_education extends WP_Widget {
 		)); 
 		
 		if ( $query->have_posts() ) {
+			$output = '<ul class="vertical-list">';
+
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				echo '<li>' . get_the_title( $query->post->ID ) . '</li>';
+				$output .= '<li><h3>' . get_the_title( $query->post->ID ) . '</h3>';
+				$output .= get_the_excerpt() . '</li>';
 			}
+			
 			wp_reset_postdata();
+			$output .= '</ul>';
+			echo $output;
+		}
+		else {
+			echo "No education added.";
 		}
 
 		echo $args['after_widget'];

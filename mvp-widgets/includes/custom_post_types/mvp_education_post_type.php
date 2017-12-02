@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Fired during plugin activation
+ * Education post type
  *
- * @link       https://github.com/gmarokov
- * @since      1.0.0
+ * @link       https://github.com/gmarokov/mvp-widgets-plugin
+ * @since      0.1
  *
  * @package    Mvp_Widgets
  * @subpackage Mvp_Widgets/includes
@@ -12,38 +12,38 @@
 
 
 $labels = array(
-    'name'                  => _x( 'Education', 'Post Type General Name', 'text_domain' ),
-    'singular_name'         => _x( 'Education', 'Post Type Singular Name', 'text_domain' ),
-    'menu_name'             => __( 'Education', 'text_domain' ),
-    'name_admin_bar'        => __( 'Education', 'text_domain' ),
-    'archives'              => __( 'Item Archives', 'text_domain' ),
-    'attributes'            => __( 'Item Attributes', 'text_domain' ),
-    'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-    'all_items'             => __( 'All Items', 'text_domain' ),
-    'add_new_item'          => __( 'Add New Item', 'text_domain' ),
-    'add_new'               => __( 'Add New', 'text_domain' ),
-    'new_item'              => __( 'New Item', 'text_domain' ),
-    'edit_item'             => __( 'Edit Item', 'text_domain' ),
-    'update_item'           => __( 'Update Item', 'text_domain' ),
-    'view_item'             => __( 'View Item', 'text_domain' ),
-    'view_items'            => __( 'View Items', 'text_domain' ),
-    'search_items'          => __( 'Search Item', 'text_domain' ),
-    'not_found'             => __( 'Not found', 'text_domain' ),
-    'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-    'featured_image'        => __( 'Featured Image', 'text_domain' ),
-    'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-    'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-    'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-    'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
-    'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
-    'items_list'            => __( 'Items list', 'text_domain' ),
-    'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
-    'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+    'name'                  => _x( 'Education', 'Post Type General Name', 'mvp-widgets' ),
+    'singular_name'         => _x( 'Education', 'Post Type Singular Name', 'mvp-widgets' ),
+    'menu_name'             => __( 'Education', 'mvp-widgets' ),
+    'name_admin_bar'        => __( 'Education', 'mvp-widgets' ),
+    'archives'              => __( 'Item Archives', 'mvp-widgets' ),
+    'attributes'            => __( 'Item Attributes', 'mvp-widgets' ),
+    'parent_item_colon'     => __( 'Parent Item:', 'mvp-widgets' ),
+    'all_items'             => __( 'All Items', 'mvp-widgets' ),
+    'add_new_item'          => __( 'Add New Item', 'mvp-widgets' ),
+    'add_new'               => __( 'Add New', 'mvp-widgets' ),
+    'new_item'              => __( 'New Item', 'mvp-widgets' ),
+    'edit_item'             => __( 'Edit Item', 'mvp-widgets' ),
+    'update_item'           => __( 'Update Item', 'mvp-widgets' ),
+    'view_item'             => __( 'View Item', 'mvp-widgets' ),
+    'view_items'            => __( 'View Items', 'mvp-widgets' ),
+    'search_items'          => __( 'Search Item', 'mvp-widgets' ),
+    'not_found'             => __( 'Not found', 'mvp-widgets' ),
+    'not_found_in_trash'    => __( 'Not found in Trash', 'mvp-widgets' ),
+    'featured_image'        => __( 'Featured Image', 'mvp-widgets' ),
+    'set_featured_image'    => __( 'Set featured image', 'mvp-widgets' ),
+    'remove_featured_image' => __( 'Remove featured image', 'mvp-widgets' ),
+    'use_featured_image'    => __( 'Use as featured image', 'mvp-widgets' ),
+    'insert_into_item'      => __( 'Insert into item', 'mvp-widgets' ),
+    'uploaded_to_this_item' => __( 'Uploaded to this item', 'mvp-widgets' ),
+    'items_list'            => __( 'Items list', 'mvp-widgets' ),
+    'items_list_navigation' => __( 'Items list navigation', 'mvp-widgets' ),
+    'filter_items_list'     => __( 'Filter items list', 'mvp-widgets' ),
 );
 
 $args = array(
-    'label'                 => __( 'Education', 'mvp' ),
-    'description'           => __( 'Education', 'mvp' ),
+    'label'                 => __( 'Education', 'mvp-widgets' ),
+    'description'           => __( 'Education', 'mvp-widgets' ),
     'labels'                => $labels,
     'supports' => array( 
         'title',

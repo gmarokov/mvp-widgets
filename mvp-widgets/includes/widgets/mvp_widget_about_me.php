@@ -1,31 +1,25 @@
 <?php
 
 /**
- * Fired during plugin activation
+ * Widget displaying text area about me. 
  *
- * @link       https://github.com/gmarokov
- * @since      1.0.0
+ * This class defines all code necessary to display and manage the widget.
  *
+ * @since      0.1
  * @package    Mvp_Widgets
  * @subpackage Mvp_Widgets/includes
- */
-
-/**
- * Fired during plugin activation.
- *
- * This class defines all code necessary to run during the plugin's activation.
- *
- * @since      1.0.0
- * @package    Mvp_Widgets
- * @subpackage Mvp_Widgets/includes
- * @author     Georgi <georgi.marokov@gmail.com>
+ * @author     Georgi Marokov <georgi.marokov@gmail.com>
  */
 
 class mvp_widget_about_me extends WP_Widget {
 
   	// Set up the widget name and description.
   	public function __construct() {
-   		$widget_options = array( 'classname' => 'mvp-about-me-widget', 'description' => 'About me text widget.' );
+   		$widget_options = array( 
+			'classname' => 'mvp-about-me-widget', 
+			'description' => 'About me text widget.' 
+		);
+		
     	parent::__construct( 'mvp_about_me_widget', 'MVP About me', $widget_options );
   	}
 
@@ -62,7 +56,8 @@ class mvp_widget_about_me extends WP_Widget {
   	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['paragraph'] = strip_tags($new_instance['paragraph']);
+		$instance['paragraph'] = $new_instance['paragraph'];
+
 		return $instance;
   	}
 
