@@ -1,5 +1,5 @@
 # mvp-widgets
-[![Build Status](https://travis-ci.org/gmarokov/mvp-theme.svg?branch=master)](https://travis-ci.org/gmarokov/mvp-theme)
+[![Build Status](https://travis-ci.org/gmarokov/mvp-widgets.svg?branch=master)](https://travis-ci.org/gmarokov/mvp-widgets)
 
 MVP Widgets plugin for WordPress is portfolio widgets for professional individuals. 
 Widgets were mainly created to support MVP Theme, but they can be used separetely. 
