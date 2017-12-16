@@ -55,6 +55,8 @@ class mvp_widget_projects extends WP_Widget {
 			
 			wp_reset_postdata();
 			$output .= "</ul>";
+			//TODO: View more only if posts available
+			$output .= '<a class="btn btn-primary" href="/projects">View more</a>';
 			echo $output;
 		}
 		
