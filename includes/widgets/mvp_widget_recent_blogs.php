@@ -38,19 +38,21 @@ class mvp_widget_recent_blogs extends WP_Widget_Recent_Posts {
 			apply_filters( 
 				'widget_posts_args', 
 				array( 
+					'post_type' => 'post',
 					'posts_per_page' => $number, 
 					'no_found_rows' => true, 
 					'post_status' => 'publish', 
-					'ignore_sticky_posts' => true 
+					'ignore_sticky_posts' => true,
+					'suppress_filters' => true 
 				) 
 			)
 		);
-		
+
 		if( $query->have_posts() ) {
 			$output = '<ul class="vertical-list">';
 			
 			while( $query->have_posts() ) {
-				$query->the_post(); 				
+				$query->the_post(); 			
 				$output .= '<li>';
 				$output .= '<h3><a href="'.get_permalink().'" title="'.get_the_title().'">'.get_the_title().'</a></h3>';
 				$output .= '<p><span>'. get_the_time( 'l, F jS, Y' ) . '</span></p>';
@@ -64,11 +66,10 @@ class mvp_widget_recent_blogs extends WP_Widget_Recent_Posts {
 				$output .= '<div class="clearfix"></div>';
 				$output .= '</li>';
 			}
-
-			wp_reset_postdata();
 			$output .= "</ul>";
 			echo $output;
 		}
+		wp_reset_postdata();
 
 		echo $after_widget;
 	}
