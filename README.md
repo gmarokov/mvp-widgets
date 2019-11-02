@@ -8,7 +8,7 @@ NOT PRODUCTION READY!
 
 Demo
 ---------------
-Demo can be found at: http://worldwildwebdev.com
+Demo can be found at: http://worldwildweb.dev
 
 Widgets in pack:
 ---------------
